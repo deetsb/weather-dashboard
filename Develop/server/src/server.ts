@@ -1,5 +1,10 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import dotenv from 'dotenv';
 import express from 'express';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 dotenv.config();
 
 // Import the routes
@@ -10,14 +15,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // TODO: Serve static files of entire client dist folder
-app.use(express.static('dist'));
-app.get('/', (_req: Request, res: Response) => res.send('Navigate to /send or /paths'));
+app.use(express.static(path.join(__dirname, '../../client/dist')));
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/send', (_req: Request, res: Response) =>
-  res.sendFile(path.join(__dirname, '../public/send.html'))
-);
 // TODO: Implement middleware for parsing JSON and urlencoded form data
- app.use(express.json())
+ app.use(express.json());
+ 
 // TODO: Implement middleware to connect the routes
 app.use(routes);
 
