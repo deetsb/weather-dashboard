@@ -10,9 +10,14 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // TODO: Serve static files of entire client dist folder
+app.use(express.static('dist'));
+app.get('/', (_req: Request, res: Response) => res.send('Navigate to /send or /paths'));
 
+app.get('/send', (_req: Request, res: Response) =>
+  res.sendFile(path.join(__dirname, '../public/send.html'))
+);
 // TODO: Implement middleware for parsing JSON and urlencoded form data
-
+ app.use(express.json())
 // TODO: Implement middleware to connect the routes
 app.use(routes);
 
