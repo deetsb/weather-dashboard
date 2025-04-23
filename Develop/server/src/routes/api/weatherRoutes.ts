@@ -21,7 +21,7 @@ router.post('/', async (req: Request, res: Response) => {
 });
 
 // TODO: GET search history
-router.get('/history', async (req: Request, res: Response) => {
+router.get('/history', async (_req: Request, res: Response) => {
   try {
     const history = await HistoryService.getCities();
     res.status(200).json(history);
@@ -32,6 +32,15 @@ router.get('/history', async (req: Request, res: Response) => {
 });
 
 // * BONUS TODO: DELETE city from search history
-router.delete('/history/:id', async (req: Request, res: Response) => {});
+router.delete('/history/:id', async (req: Request, res: Response) => {
+  try {
+    const cityId = parseInt(req.params.id);
+    await HistoryService.removeCity(cityId);
+    res.status(204).send();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error deleting city from search history' });
+  }
+});
 
 export default router;
