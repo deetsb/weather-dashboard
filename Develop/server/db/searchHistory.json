@@ -1,10 +1,18 @@
 [
   {
-    "name": "San Diego",
-    "id": 1745432453937
+    "name": "Lexington",
+    "id": 1746473702013
   },
   {
-    "name": "Columbia",
-    "id": 1745432461938
+    "name": "Chicago",
+    "id": 1746473733727
+  },
+  {
+    "name": "Los Angeles",
+    "id": 1746474268540
+  },
+  {
+    "name": "San Jose",
+    "id": 1746474280909
   }
 ]

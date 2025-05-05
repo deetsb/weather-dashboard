@@ -108,11 +108,11 @@ class WeatherService {
 
   // TODO: Complete buildForecastArray method
   private buildForecastArray(weatherData: any[], name: string): Weather[] { 
-    const forecast: { [key: string]: Weather } = {}
-    weatherData.forEach((date) => {
-      const day = new Date(date.dt * 1000).toISOString().split('T')[0];
-      if (!forecast[day] && Object.keys(forecast).length < 5) {
-        forecast[date] = new Weather(
+    const forecast: Weather[] = []
+    
+    weatherData.forEach((date, i ) => {
+      if (forecast.length < 5 && i % 8 == 0) {
+        forecast.push( new Weather(
           date.main.temp,
           date.main.humidity,
           date.wind.speed,
@@ -120,10 +120,11 @@ class WeatherService {
           date.weather[0].icon,
           date.weather[0].description,
           name,
-        );
+        ));
       }
     });
-    return Object.values(forecast);
+    console.log(forecast)
+    return forecast;
   }
 
   // TODO: Complete getWeatherForCity method
