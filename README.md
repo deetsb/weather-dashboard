@@ -12,9 +12,14 @@ For more information on how to work with the OpenWeather API, refer to the Full-
 - OpenWeather API (5-day weather)
 - Render
 
+![Forecast](forecast.png)
+
 ## Links
 - [GitHub Repo](https://github.com/deetsb/weather-dashboard)
-- [Render]()
+- [Render](https://weather-dashboard-1-rx8s.onrender.com)
+
+## Credit
+Tutoring session with Alexis Javier.
 
 ## Questions
 Should you have questions, please reach me via:
